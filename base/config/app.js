@@ -1,7 +1,6 @@
 //Imports
 const express = require("express");
 const bodyparser = require("body-parser");
-const routes = require("../routes/routes");
 
 require("../../config.env");
 
@@ -11,7 +10,8 @@ app.set("port", process.env.PORT || 3000);
 
 //Uses
 app.use(bodyparser.json());
-app.use("/v1/proy-escuela", routes);
+
+app.use("/api/proy-escuela/v1", require("../routes/routes"));
 
 //Exports
 module.exports = app;

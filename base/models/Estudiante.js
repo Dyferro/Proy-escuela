@@ -2,7 +2,7 @@
 const mongoose = require("mongoose");
 
 //Schema Profesor
-const ProfesorSchema = new mongoose.Schema({
+const EstudianteSchema = new mongoose.Schema({
   name: {
     type: String,
     required: true,
@@ -21,7 +21,7 @@ const ProfesorSchema = new mongoose.Schema({
     type: String,
     required: false,
   },
-  subject: {
+  group: {
     type: String,
     required: false,
   },
@@ -41,4 +41,4 @@ const ProfesorSchema = new mongoose.Schema({
 });
 
 //Exports
-module.exports = mongoose.model("Profesor", ProfesorSchema);
+module.exports = mongoose.model("Estudiante", EstudianteSchema);
