@@ -2,10 +2,29 @@ const profesorController = {};
 const Profesor = require("../models/Profesor");
 
 //Create Profesor
-profesorController.create = (profesor) => {
-  const newProfesor = new Profesor(profesor);
+profesorController.create = async (req, res) => {
+  const newProfesor = await new Profesor(req.body);
   newProfesor.save();
-  return "New added profesor";
+  res.status(200).json({ status: true, message: "New added profesor" });
+};
+
+//Get all Profesors
+profesorController.getAll = async (req, res) => {
+  let resultado = await Profesor.find();
+  res.status(200).json({ status: true, resultado });
+};
+
+//Get Profesor by Identification
+profesorController.getByIdent = async (req, res) => {
+  let resultado = await Profesor.findOne({ ident: req.params.ident });
+  res.status(200).json({ status: true, resultado });
+};
+
+//Delete Profesor by Identification
+profesorController.deleteByIdent = async (req, res) => {
+  await Profesor.findOneAndDelete({ ident: req.params.ident });
+  let resultado = "Successfully deleted";
+  res.status(200).json({ status: true, resultado });
 };
 
 module.exports = profesorController;
