@@ -15,4 +15,7 @@ app.get("/profesor/get/:ident", profesorController.getByIdent);
 //Eliminar
 app.delete("/profesor/remove/:ident", profesorController.deleteByIdent);
 
+//Actualizar datos de Pofesor
+app.put("/profesor/update/:ident", profesorController.updateByIdent);
+
 module.exports = app;
